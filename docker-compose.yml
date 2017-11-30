@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  # Image with uWSGI and Nginx for Flask apps in Python 2.7 and 3.5 running in a single container.
+  flask:
+    build: flask/  
+    volumes:
+        - code: D:/DOCKER/SecWebAw/flask/app:/var/www/app
+    expose:
+      - 80
+      - 443
+    ports:
+      - 80:80
+      - 443:443
+        
+  # mysql database
+  mysql:
+    build: db/
+    environment:
+         MYSQL_ROOT_PASSWORD: toor
+    volumes:
+      - /var/lib/mysql # A volume should be used to keep data between container (re)starts
+
+volumes:
+  code:

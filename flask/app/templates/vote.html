@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} Upvote {% endblock %}
+
+{% block body %}
+<div class="vote">
+    <div id="usr">{{ post[1] }}</div>
+    <p>{{ post[3] }}</p>
+    </br>
+    <p><i>Bitte gebe die untenstehende Zeichenfolge in das Textfeld ein, um deinen {{ method_label }} zu
+        verifizieren!</i></p>
+    <label style="font-family: 'Consolas';"><b>{{ csrf_seq }}</b></label>
+    </br>
+    </br>
+    <form method="post" action="{{ url_for('finish_vote') }}?csrf_token={{ csrf_seq }}&post_id={{ post[0] }}&method={{ method }}">
+        <input type="text" placeholder="Code eingeben..." name="vote_code" id="vote_code" required>
+        <button type="submit">{{ method_label }}n!</button>
+    </form>
+</div>
+{% endblock %}

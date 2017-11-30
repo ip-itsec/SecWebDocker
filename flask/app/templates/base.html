@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Tralala {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/trullastyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/signup.css') }}">
+
+</head>
+<body>
+
+<div id="smooth_backg">
+    <img id="back" src="{{ url_for('static', filename='images/background.jpg') }}" border="0" alt="Hintergrundbild">
+    <div id="content">
+
+
+        <!-- {% block navigation %} -->
+
+
+        <div>
+            <a href="{{ url_for('index') }}" class="nav_link">
+                <button class="admin" class="menubtn">Start</button>
+            </a>
+            <br/>
+            {% if session["logged_in"] %}
+            <a href="{{ url_for('logout') }}" class="nav_link">
+                <button class="admin" class="menubtn">Logout</button>
+            </a>
+            </br>
+            <button class="signup" onclick="document.getElementById('id03').style.display='block'">Neuer Post</button>
+            {% else %}
+            <button class="signup" onclick="document.getElementById('id01').style.display='block'">Login</button>
+            <br>
+            <!-- Button to open the modal -->
+            <button class="signup" onclick="document.getElementById('id02').style.display='block'">Registrieren</button>
+            <br>
+            {% endif %}
+            <br>
+            {% if session["logged_in"] %}
+            {% if session["role_id"]|string() == "5" %}
+            <button class="admin" class="menubtn"><a href="{{ url_for('admin_dashboard') }}"
+                                                     style="text-decoration: none;">Dashboard</a></button>
+            {% endif %}
+            {% endif %}
+        </div>
+        <!-- {% endblock %} -->
+
+        <div class="tral">Tralala</div>
+        <div id="main">
+
+            {% block body %}
+
+            {% endblock %}
+
+        </div> <!-- END main -->
+
+        <!-- Registrierung -->
+        <div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close"
+          title="Close Modal">&times;</span>
+            <form class="modal-content animate" method="POST" action="{{ url_for('post_user') }}">
+                <div class="container">
+                    <label><b>Email</b></label>
+                    <input type="text" placeholder="Email eingeben..." name="reg_email" id="reg_email" required>
+
+                    <label><b>Passwort</b></label>
+                    <input type="password" placeholder="Passwort eingeben..." name="reg_password" id="reg_password"
+                           required>
+
+                    <label><b>Passwort wiederholen</b></label>
+                    <input type="password" placeholder="Passwort wiederholen..." name="reg_password_repeat"
+                           id="reg_password_repeat" required>
+                    <p>Mit der Erstellung eines Accounts akzeptierst du unsere <a href="#">Geschäftsbedingungen</a>.</p>
+
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                                class="cancelbtn">Abbrechen
+                        </button>
+                        <button type="submit" class="signupbtn">Registrieren</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <!-- Login -->
+        <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+          title="Close Modal">&times;</span>
+            <form class="modal-content animate" method="POST" action="{{ url_for('login') }}">
+                <div class="container">
+                    <label><b>Email</b></label>
+                    <input type="text" placeholder="Email eingeben..." name="login_email" id="login_email" required>
+
+                    <label><b>Passwort</b></label>
+                    <input type="password" placeholder="Passwort eingeben..." name="login_password" id="login_password"
+                           required>
+                    <input type="checkbox"> Eingeloggt bleiben |
+                    <span class="psw"><a href="#">Passwort</a> vergessen?</span>
+
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                class="cancelbtn">Abbrechen
+                        </button>
+                        <button type="submit" class="signupbtn">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Neuer Post -->
+        <div id="id03" class="modal">
+    <span onclick="document.getElementById('id03').style.display='none'" class="close"
+          title="Close Modal">&times;</span>
+            <form class="modal-content animate" method="POST" action="{{ url_for('post_message') }}">
+                <div class="container">
+                    <label><b>Nachricht</b></label>
+                    <input type="text" placeholder="Neue Nachricht eingeben..." name="post_message" id="post_message"
+                           required>
+                    <label><b>Hashtags</b></label>
+                    <input type="text" placeholder="Hashtags ohne # und mit Komma trennen..." name="post_hashtags"
+                           id="post_hashtags" required>
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id03').style.display='none'"
+                                class="cancelbtn">Abbrechen
+                        </button>
+                        <button type="submit" class="signupbtn">Absenden</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div> <!-- END content -->
+</div> <!-- END smooth_backg -->
+</body>
+</html>

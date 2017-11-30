@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="de">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tralala! Hier wird nicht gejodelt!</title>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" type="text/css" href="css/trullastyle.css">
+<link rel="stylesheet" type="text/css" href="css/signup.css">
+<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<div id="smooth_backg">
+<img id="back" src="images/background.jpg" border="0" alt="Hintergrundbild">
+<div id="content">
+<div>
+ <!-- Button to open the modal login form -->
+<button class="login" onclick="document.getElementById('id01').style.display='block'">Login</button><br>
+ <!-- Button to open the modal -->
+<button class="signup" onclick="document.getElementById('id02').style.display='block'">Sign Up</button><br>
+<button class="admin" onclick="window.location.href='admin.html'" class="menubtn">Administration</button>
+</div>
+<div class="tral">Tralala</div>
+<div id="main">
+
+
+
+<div class="red">
+  <div id="usr">FooBar</div>
+  <p>Willkommen zu Tralala!</p>
+  <div id="upvote">+</div>
+  <div id="downvote">-</div>
+</div>
+
+<div class="blue">
+  <div id="usr">F00Baz</div>
+  <p>Hier wird nicht gejodelt, hier wird geträllert!</p>
+  <div id="upvote">+</div>
+  <div id="downvote">-</div>
+</div>
+
+<div class="green">
+  <div id="usr">Foo</div>
+  <p>Be Excellent to Each Other!</p>
+  <div id="upvote">+</div>
+  <div id="downvote">-</div>
+</div>
+
+<div class="yellow">
+  <div id="usr">Bar</div>
+  <p>enjoy your stay</p>
+  <div id="upvote">+</div>
+  <div id="downvote">-</div>
+</div>
+
+</div> <!-- END main -->
+
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="checkbox" checked="checked"> Remember me
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div> 
+
+
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div> 
+
+
+
+</div> <!-- END content -->
+</div> <!-- END smooth_backg -->
+</body>
+</html>

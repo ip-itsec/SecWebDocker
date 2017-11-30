@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Tralala! Hier wird nicht gejodelt! {% endblock %}
+
+{% block body %}
+
+{% if error %}
+<div class="vote">{{ error }}</div>
+{% endif %}
+
+{% if dashboard %}
+{{ dashboard|safe }}
+{% endif %}
+
+{% endblock %}

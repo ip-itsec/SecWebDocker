@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Registrierung war nicht erfolgreich!{% endblock %}
+
+{% block body %}
+{% if code==-1 %}
+<p> Leider war deine Registrierung nicht erfolgreich. Bitte versuche es erneut!</p>
+{% elif code==0 %}
+<p> Leider war deine Registrierung nicht erfolgreich. Der User <b>{{ reg_email }}</b> existiert bereits!</p>
+{% elif code==2 %}
+<p> Das wiederholte Passwort stimmt leider mit deinem eingegebenen Passwort nicht überein. Versuche es erneut!</p>
+{% elif code==3 %}
+<p> Wir konnten dir keine Bestätigungsmail senden! Bitte kontaktiere den Administrator, um einen neuen Bestätigungslink
+    anzufordern für <b>{{ reg_email }}</b></p>
+{% endif %}
+{% endblock %}
